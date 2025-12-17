@@ -1,0 +1,11 @@
+# opt+z 
+
+重点: interoperability and integration of varied knowledge systems
+
+什么会有这个课题: previously is heavily rely on expert knowledge. with the development of LLM, it can find semantic relationships between words, therefore provide better performance on ontology matching. We have chatgpt4[a paper link] as an experienment on this area. The problem of it is also very prominent: (1) limited context window, (2) with increased information volume, higher chance that lead to hallucination. so it gives us a key point of solving the problem only give the most important information to LLM.
+
+LLM4OM: mentions an architecture, 
+
+
+
+to derive relationships and give clear reasoning for these conecpts, knowledge graph comes into play
