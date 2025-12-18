@@ -1,11 +1,18 @@
 # opt+z 
 
-重点: interoperability and integration of varied knowledge systems
+重点: interoperability and integration of varied knowledge systems, 是当下data management中很重要的话题.
 
-什么会有这个课题: previously is heavily rely on expert knowledge. with the development of LLM, it can find semantic relationships between words, therefore provide better performance on ontology matching. We have chatgpt4[a paper link] as an experienment on this area. The problem of it is also very prominent: (1) limited context window, (2) with increased information volume, higher chance that lead to hallucination. so it gives us a key point of solving the problem only give the most important information to LLM.
-
-LLM4OM: mentions an architecture, 
+背景内容: 对于针对融合多领域数据的框架, 有很多的框架被提出来. 最开始是We have chatgpt4[a paper link] as an experienment on this area. The problem of it is also very prominent: (1) limited context window, (2) with increased information volume, higher chance that lead to hallucination. so it gives us a key point of solving the problem only give the most important information to LLM. 随后LLM4OM这篇文章提出mentions an architecture, is targeted to match different ontology of datasets. Different datasets have their different way of representing data, for example owl, xml. 这些框架中使用OAEI中统一的数据格式, 比如xx and xx文章; 或者有
 
 
 
-to derive relationships and give clear reasoning for these conecpts, knowledge graph comes into play
+讨论的问题: 大问题是我们想做ontology mapping融合多个领域的数据, 我们解决的问题是在数据源上, 我们是否可以使用LLM或者RAG去自动匹配不同的数据源, develop systems that automatically convert heterogeneous data model into a structured view of documents. In this paper, it is manully match all heterogeneous data which reuqires domain knowledge. We try to do improvement based on the architecture, finding a way using LLM or RAG architecture to automatically do this process, faliciting data integration.
+(这个地方可以用来写文献综述或者我研究的那个算法也可以写)
+previously is heavily rely on expert knowledge. with the development of LLM, it can find semantic relationships between words, therefore provide better performance on ontology matching. 
+
+
+
+
+
+
+to derive relationships and give clear reasoning for these conecpts.

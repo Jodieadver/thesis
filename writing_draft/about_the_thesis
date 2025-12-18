@@ -1,3 +1,17 @@
 
+匹配不同ontology的概念,这个部分已经有了研究, 比如说LLMsOM
+我想做的研究是把前面不同数据集不同格式用LLM或者RAG做归一化处理
 
-different datasets have different way of representing things, for example owl, or 
+LLMs4OM is targeted to match different ontology of datasets. Different datasets have their different way of representing data, for example owl, xml. In this papeer, it is manully match all heterogeneous data which reuqires domain knowledge.
+
+In this paper, we try to find a way using LLM or RAG architecture to automatically do ontology matching, faliciting data integration.
+
+
+
+
+================================================================
+reference paper
+================================================================
+
+* Language Models Enable Simple Systems for Generating
+Structured Views of Heterogeneous Data Lakes: convert heterogeneous documents into a structured tabular.
