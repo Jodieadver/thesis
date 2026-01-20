@@ -1,13 +1,63 @@
 4.1 Overall System Architecture
 
+model
+ministral-3:14b
+mistral:7b -- faster
 
+
+========source======== {'name': 'MA_0000001', 'iri': 'http://mouse.owl#MA_0000001', 'label': 'mouse anatomy', 'childrens': [], 'parents': [], 'synonyms': [], 'comment': []}
+
+
+[实验过程: 首先运行llm本身的代码, 然后]
 
 The overall workflow consists of the following core components, each of which will be
 discussed in detail in the subsequent sections.
-1. 
+一. 在数据类型不一致的情况下如何automated shema matching
+使用LLM把所有数据类型自行提取, 这个architecture的核心思想在于先用LLM少量看文档, 确认“要抽取哪些字段”,然后再让LLM写“可复用的抽取代码”, 用代码而不是LLM去跑所有文档, 从而自动化全过程以及提高效率和一致性.
+1. shema identification
+与其看所有文档的全文和所有属性和值, 不如先用LLM少量看文档, 确认“要抽哪些字段”. 
 
-2.
 
-3. Prompt Engineering
 
-4.
+
+2. function synthesis
+虽然值不同, 但值出现的位置和格式往往是类似的, 对每一个字段, 让LLM写一个python函数, 这个函数的输入是一篇文档, 输出是该字段的值.
+
+与其每个字段只有一个函数, 我们用多个函数, 如何保证function的多样性是关键. 我们使用zero-shot和few-shots结合的方式(或者是鼓励使用regex或者python库). Here we use the strategy proposed in Arora et al,
+
+
+3. function aggreagation
+如何在这些函数中选择一个函数, 我们和参考文献一样, 使用weak supervision 
+
+
+二. 如何进行不用领域的数据对齐
+我们在这个步骤想追求的是the user inputs documents and the
+system automatically outputs a structured view of those documents,
+without any domain specific training or prompt customization
+
+
+go through news with acquisition 
+converage
+get the information from multiple data sources 
+filters
+combine different sources to find potential information 
+
+
+
+
+
+
+
+
+
+
+
+======================================================================================
+@article{arora,
+  title={Embroid: Unsupervised prediction smoothing can improve few-shot classification},
+  author={Guha, Neel and Chen, Mayee and Bhatia, Kush and Mirhoseini, Azalia and Sala, Frederic and R{\'e}, Christopher},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  pages={63259--63291},
+  year={2023}
+}

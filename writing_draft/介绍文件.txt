@@ -1,0 +1,26 @@
+数据匹配
+
+### **Automated data integration/ontology matching via LLMs or RAG architectures.**
+
+Different datasets offer different perspectives. Put together, they can generate new insights. For instance, by combining an occurrence dataset of species and their occurrences in certain geographical locations with a dataset on location soil types, we can discover outliers: species that normally thrive under certain soil types, but suddenly seem to thrive in other soil types as well. The challenge here is to automatically suggest mappings between distinct data models for data integration. Similarly, different databases could use different ways to model specimen data. Could we automatically create mappings between these data models to facilitate data integration?
+
+References:
+
+- Giglou, Hamed Babaei, Jennifer D'Souza, and Soren Auer. "LLMs4OM: Matching Ontologies with Large Language Models." arXiv preprint arXiv:2404.10317 (2024). https://arxiv.org/pdf/2404.10317
+- Bradley P. Allen, Lise Stork, and Paul Groth. Knowledge Engineering Using Large Language Models. In Special Issue on Trends in Graph Data and Knowledge. Transactions on Graph Data and Knowledge (TGDK), Volume 1, Issue 1, pp. 3:1-3:19, Schloss Dagstuhl – Leibniz-Zentrum f&#252;r Informatik (2023) https://doi.org/10.4230/TGDK.1.1.3
+
+
+
+
+
+数据匹配
+
+A recent development is the use of LLMs to allow databases to query over unstructured data [2,3,4]. Recent work has proposed the ability to query over LLMs treating their parameters as data sources [1,4].  This work often uses classical approaches to query planning and query optimisation bending them to fit LLMs as databases. In this project, we will investigate whether LLMs can substitute these query optimisation procedures and the trade-offs involved.
+
+References
+
+1. Dario Satriani, Enzo Veltri, Donatello Santoro, Sara Rosato, Simone Varriale, and Paolo Papotti. 2025. Logical and Physical Optimizations for SQL Query Execution over Large Language Models. Proc. ACM Manag. Data 3, 3, Article 181 (June 2025), 28 pages. https://doi.org/10.1145/3725411
+2. Matthias Urban and Carsten Binnig. 2024. CAESURA: Language Models as Multi-Modal Query Planners. In 14th Conference on Innovative Data Systems Research, CIDR 2024, Chaminade, HI, USA, January 14--17, 2024. [www.cidrdb.org.](https://www.cidrdb.org./) https://www.cidrdb.org/cidr2024/papers/p14-urban.pdf
+3. Simran Arora, Brandon Yang, Sabri Eyuboglu, Avanika Narayan, Andrew Hojel, Immanuel Trummer, and Christopher Ré. 2023. Language Models Enable Simple Systems for Generating Structured Views of Heterogeneous Data Lakes. Proc. VLDB Endow., Vol. 17, 2 (2023), 92--105. https://www.vldb.org/pvldb/vol17/p92-arora.pdf
+4. Giovanni Trappolini, Andrea Santilli, Emanuele Rodolà, Alon Halevy, and Fabrizio Silvestri. 2023. Multimodal Neural Databases. In Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR '23). Association for Computing Machinery, New York, NY, USA, 2619–2628. https://doi.org/10.1145/3539618.3591930
+5. Allen, B. P., Chhikara, P., Ferguson, T. M., Ilievski, F., & Groth, P. (2025). Sound and Complete Neurosymbolic Reasoning with LLM-Grounded Interpretations. *arXiv preprint arXiv:2507.09751*.

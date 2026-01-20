@@ -1,0 +1,63 @@
+
+在不需要理解典型数据集的情况下, 
+
+2025.12.29 
+搞清楚llm这篇文章讲了什么: 两个步骤, 用RAG确认认证集, LLM去认证是否相同. 需要写different parser part. But now we can add one extra step to that and use llm to create code so that you can combine different sources.
+setup llm locally, did ministral-7b cause of heard its good.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2025.12.30
+在第一个部分, 我的输入是多种数据类型,输出是这个格式
+当前用的是xml
+{'name': 'MA_0000001', 'iri': 'http://mouse.owl#MA_0000001', 'label': 'mouse anatomy', 'childrens': [], 'parents': [], 'synonyms': [], 'comment': []}
+第二个部分, 我的输入是这个输出结构,输出是与target.xml的匹配项
+
+
+2025.12.31
+今天只需要跑一个小的mvp出来
+抽取​少量​文档​,​ 用​di​rect​类似​的​prompt请​llm列出​“有​用​字段​“, ​收集​这些​字段​并​按​出现​频率​排序，​再​用​ L​LM ​对​“字段​全集”​进行​一​次​重排序，​选出​最​有​用​的​字段​
+用本地的一个ollama模型,让它根据一部分的数据,写一个llm的代码出来, 然后用它得到这个输出结果.
+对于第二部分来说你就搞清楚recall, f1, precision什么意思
+把这两段代码拼在一起. -> 后面的继续看
+
+写完test_ollama.py的输入输出
+知道run.py的输入输出
+
+想如何跑一个大的mvp出来, 最终实现的是可以不同数据文档,能通过llm写代码实现自动匹配, 类型之间进行匹配.
+可以通过增加description的方式提高match概率.
+
+
+1.7
+
+
+
+
+

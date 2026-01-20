@@ -1,0 +1,25 @@
+In this section,we provide background on large language models(LLMs) and RAG which is the center of our work. 
+
+2.1 LARGE LANGUAGE MODEL
+LLM is a machine learning model trained on a self-supervised task. It has the ability to do in-context learning, which is solving new tasks without updating any model parameters. 
+
+2.2 PROMPT ENGINEERING
+Use natural language to elicit a particular generation for a specific kind of task.
+
+xxxxxxx has become general principle of promt engineering.
+
+2.
+
+
+
+
+
+
+
+==============================
+@article{in_context_learning,
+  title={Large language models are few-shot clinical information extractors},
+  author={Agrawal, Monica and Hegselmann, Stefan and Lang, Hunter and Kim, Yoon and Sontag, David},
+  journal={arXiv preprint arXiv:2205.12689},
+  year={2022}
+}

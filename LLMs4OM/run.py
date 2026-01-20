@@ -4,7 +4,9 @@ from ontomap.evaluation.evaluator import evaluator
 from ontomap.encoder.lightweight import IRILabelInLightweightEncoder
 from ontomap.ontology_matchers.retrieval.models import BERTRetrieval
 from ontomap.postprocess import process
+import subprocess
 
+#  original code
 # Setting configurations for experimenting 'retrieval' on CPU
 config = BaseConfig(approach="retrieval").get_args(device="cpu")
 # set dataset directory
@@ -17,6 +19,9 @@ encoded_inputs = IRILabelInLightweightEncoder()(
     source=ontology["source"], target=ontology["target"]
 )
 
+
+print("========encoded_inputs========", encoded_inputs)
+print("========source========", ontology["source"][0])
 print("================", config.BERTRetrieval)
 
 # init BERTRetrieval
@@ -33,7 +38,6 @@ predicts = process.eval_preprocess_ir_outputs(predicts=predicts)
 results = evaluator(
     track="anatomy", predicts=predicts, references=ontology["reference"]
 )
-print(results)
 
 
 # change
