@@ -7,13 +7,22 @@ from tqdm import tqdm
 
 from ontomap.base import BaseOMModel
 from ontomap.ontology_matchers.llm.llm import LLaMA2DecoderLLMArch, OpenAILLMArch
-from ontomap.ontology_matchers.rag.dataset import * # NOQA
+from ontomap.ontology_matchers.rag.dataset import *  # NOQA
 from ontomap.postprocess import process
 
 
 class RAGBasedDecoderLLMArch(LLaMA2DecoderLLMArch):
     ANSWER_SET = {
-        "yes": ["yes", "correct", "true", "positive", "valid", "right", "accurate", "ok"],
+        "yes": [
+            "yes",
+            "correct",
+            "true",
+            "positive",
+            "valid",
+            "right",
+            "accurate",
+            "ok",
+        ],
         "no": ["no", "incorrect", "false", "negative", "invalid", "wrong", "not"],
     }
 
@@ -100,8 +109,8 @@ class RAG(BaseOMModel):
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
-        self.Retrieval = self.Retrieval(**self.kwargs["retriever-config"])
-        self.LLM = self.LLM(**self.kwargs["llm-config"])
+        self.Retrieval = self.Retrieval(**self.kwargs["retriever_config"])
+        self.LLM = self.LLM(**self.kwargs["llm_config"])
 
     def __str__(self):
         return "RAG"
@@ -121,7 +130,9 @@ class RAG(BaseOMModel):
         ir_output = self.ir_generate(input_data=input_data)
         ir_output_cleaned = process.preprocess_ir_outputs(predicts=ir_output)
         # LLm generation
-        llm_predictions = self.llm_generate(input_data=input_data, ir_output=ir_output_cleaned)
+        llm_predictions = self.llm_generate(
+            input_data=input_data, ir_output=ir_output_cleaned
+        )
         return [{"ir-outputs": ir_output}, {"llm-output": llm_predictions}]
 
     def build_llm_inputs(self, input_data: Any, ir_output: Any) -> List:
@@ -157,7 +168,7 @@ class RAG(BaseOMModel):
         dataset = self.build_llm_encoder(input_data=input_data, llm_inputs=llm_inputs)
         dataloader = DataLoader(
             dataset,
-            batch_size=self.kwargs["llm-config"]["batch_size"],
+            batch_size=self.kwargs["llm_config"]["batch_size"],
             shuffle=False,
             collate_fn=dataset.collate_fn,
         )
@@ -167,7 +178,9 @@ class RAG(BaseOMModel):
             sequences, sequence_probas = self.LLM.generate(texts)
             for label, proba, iri_pair in zip(sequences, sequence_probas, iris):
                 if label == "yes":
-                    predictions.append({"source": iri_pair[0], "target": iri_pair[1], "score": proba})
+                    predictions.append(
+                        {"source": iri_pair[0], "target": iri_pair[1], "score": proba}
+                    )
         return predictions
 
     def ir_generate(self, input_data: Any) -> Any:

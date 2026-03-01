@@ -39,5 +39,6 @@ results = evaluator(
     track="anatomy", predicts=predicts, references=ontology["reference"]
 )
 
+print("========results========", results)
 
 # change
