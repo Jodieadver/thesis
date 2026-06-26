@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-    BaseConfig: Data Configuration of models
+BaseConfig: Data Configuration of models
 """
+
 import argparse
 import os
 from pathlib import Path
@@ -65,19 +66,41 @@ class BaseConfig:
         return config
 
     def retrieval(self) -> Dict:
-        config = {"top_k": 5, "device": self.device}
+        config = {"top_k": 1, "device": self.device}
         return config
 
-    def get_args(self, device="cpu", batch_size: int = None, nshots: int = None) -> Dict:
+    def get_args(
+        self, device="cpu", batch_size: int = None, nshots: int = None
+    ) -> Dict:
         self.device = device
         self.batch_size = batch_size
 
         # General configurations
-        self.parser.add_argument("--root_dir", type=str, default=os.path.join(self.root_dataset_dir, "datasets"))
-        self.parser.add_argument("--experiments_dir", type=str, default=os.path.join(self.root_dataset_dir, "experiments"))
-        self.parser.add_argument("--output_dir", type=str, default=os.path.join(self.root_dataset_dir, "experiments", "outputs"))
-        self.parser.add_argument("--stats_dir", type=str, default=os.path.join(self.root_dataset_dir, "experiments", "stats"))
-        self.parser.add_argument("--openai_embedding_dir", type=str, default=os.path.join(self.root_dataset_dir, "assets", "openai-embedding"))
+        self.parser.add_argument(
+            "--root_dir",
+            type=str,
+            default=os.path.join(self.root_dataset_dir, "datasets"),
+        )
+        self.parser.add_argument(
+            "--experiments_dir",
+            type=str,
+            default=os.path.join(self.root_dataset_dir, "experiments"),
+        )
+        self.parser.add_argument(
+            "--output_dir",
+            type=str,
+            default=os.path.join(self.root_dataset_dir, "experiments", "outputs"),
+        )
+        self.parser.add_argument(
+            "--stats_dir",
+            type=str,
+            default=os.path.join(self.root_dataset_dir, "experiments", "stats"),
+        )
+        self.parser.add_argument(
+            "--openai_embedding_dir",
+            type=str,
+            default=os.path.join(self.root_dataset_dir, "assets", "openai-embedding"),
+        )
 
         # LLM configurations
         llm_config = self.llm()
@@ -88,33 +111,86 @@ class BaseConfig:
         self.parser.add_argument("--GPT4", type=dict, default=self.gpt())
 
         # Lightweight configurations
-        fuzzy_models = ['SimpleFuzzySM', 'WeightedFuzzySM', 'TokenSetFuzzySM']
+        fuzzy_models = ["SimpleFuzzySM", "WeightedFuzzySM", "TokenSetFuzzySM"]
         for fuzzy_model in fuzzy_models:
-            self.parser.add_argument("--" + fuzzy_model, type=dict, default=self.fuzzy())
+            self.parser.add_argument(
+                "--" + fuzzy_model, type=dict, default=self.fuzzy()
+            )
 
         # Retrieval Configurations
         retriever_config = self.retrieval()
-        retriever_models = ["BM25Retrieval", "TFIDFRetrieval", "BERTRetrieval", "SpecterBERTRetrieval",
-                            "FlanT5XLRetrieval", "FlanT5XXLRetrieval", "SVMBERTRetrieval", "AdaRetrieval"]
+        retriever_models = [
+            "BM25Retrieval",
+            "TFIDFRetrieval",
+            "BERTRetrieval",
+            "SpecterBERTRetrieval",
+            "FlanT5XLRetrieval",
+            "FlanT5XXLRetrieval",
+            "SVMBERTRetrieval",
+            "AdaRetrieval",
+        ]
         for retriever_model in retriever_models:
-            self.parser.add_argument("--" + retriever_model, type=dict, default=retriever_config)
+            self.parser.add_argument(
+                "--" + retriever_model, type=dict, default=retriever_config
+            )
 
         # RAG + ICV + FewShot configurations
-        llama_rag_config = {"retriever-config": retriever_config, "llm-config": llm_config, "nshots": nshots}
-        rag_icv_models = ["LLaMA7BAdaRAG", "MistralAdaRAG", "FalconAdaRAG", "VicunaAdaRAG", "MPTAdaRAG",
-                          "LLaMA7BBertRAG", "MistralBertRAG", "FalconBertRAG", "VicunaBertRAG", "MPTBertRAG",
-                          "LLaMA7BAdaICV", "FalconAdaICV", "VicunaAdaICV", "MPTAdaICV",
-                          "LLaMA7BBertICV", "FalconBertICV", "VicunaBertICV", "MPTBertICV",
-                          "LLaMA7BAdaFewShot", "MistralAdaFewShot", "FalconAdaFewShot", "VicunaAdaFewShot", "MPTAdaFewShot",
-                          "LLaMA7BBertFewShot", "MistralBertFewShot", "FalconBertFewShot", "VicunaBertFewShot", "MPTBertFewShot",
-                          "MambaLLMAdaFewShot", "MambaLLMBertFewShot", "MambaLLMAdaRAG", "MambaLLMBertRAG"]
+        llama_rag_config = {
+            "retriever-config": retriever_config,
+            "llm-config": llm_config,
+            "nshots": nshots,
+        }
+        rag_icv_models = [
+            "LLaMA7BAdaRAG",
+            "MistralAdaRAG",
+            "FalconAdaRAG",
+            "VicunaAdaRAG",
+            "MPTAdaRAG",
+            "LLaMA7BBertRAG",
+            "MistralBertRAG",
+            "FalconBertRAG",
+            "VicunaBertRAG",
+            "MPTBertRAG",
+            "LLaMA7BAdaICV",
+            "FalconAdaICV",
+            "VicunaAdaICV",
+            "MPTAdaICV",
+            "LLaMA7BBertICV",
+            "FalconBertICV",
+            "VicunaBertICV",
+            "MPTBertICV",
+            "LLaMA7BAdaFewShot",
+            "MistralAdaFewShot",
+            "FalconAdaFewShot",
+            "VicunaAdaFewShot",
+            "MPTAdaFewShot",
+            "LLaMA7BBertFewShot",
+            "MistralBertFewShot",
+            "FalconBertFewShot",
+            "VicunaBertFewShot",
+            "MPTBertFewShot",
+            "MambaLLMAdaFewShot",
+            "MambaLLMBertFewShot",
+            "MambaLLMAdaRAG",
+            "MambaLLMBertRAG",
+        ]
 
         for rag_icv_model in rag_icv_models:
-            self.parser.add_argument("--" + rag_icv_model, type=dict, default=llama_rag_config)
+            self.parser.add_argument(
+                "--" + rag_icv_model, type=dict, default=llama_rag_config
+            )
 
-        openai_rag_config = {"retriever-config": retriever_config, "llm-config": self.gpt(), "nshots": nshots}
-        self.parser.add_argument("--ChatGPTOpenAIAdaRAG", type=dict, default=openai_rag_config)
-        self.parser.add_argument("--ChatGPTOpenAIAdaFewShot", type=dict, default=openai_rag_config)
+        openai_rag_config = {
+            "retriever-config": retriever_config,
+            "llm-config": self.gpt(),
+            "nshots": nshots,
+        }
+        self.parser.add_argument(
+            "--ChatGPTOpenAIAdaRAG", type=dict, default=openai_rag_config
+        )
+        self.parser.add_argument(
+            "--ChatGPTOpenAIAdaFewShot", type=dict, default=openai_rag_config
+        )
 
         self.parser.add_argument("-f")
         return self.parser.parse_args()

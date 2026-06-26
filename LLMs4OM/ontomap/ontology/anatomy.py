@@ -19,7 +19,7 @@ class HumanOntology(BaseOntologyParser):
 
 class MouseHumanOMDataset(OMDataset):
     track = track
-    ontology_name = "mouse-human"
+    ontology_name = "mouse-human-test"
 
     source_ontology = MouseOntology()
     target_ontology = HumanOntology()
