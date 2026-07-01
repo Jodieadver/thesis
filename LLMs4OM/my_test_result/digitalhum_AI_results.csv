@@ -1,0 +1,7 @@
+dataset,model,time(s),result
+arch1_defc-pactols,gpt-oss-120b on cerebras,1472.15,"{'intersection': 6, 'precision': 100.0, 'recall': 60.0, 'f-score': 74.99999999999999, 'predictions-len': 6, 'reference-len': 10}"
+arch2_idai-pactols,gpt-oss-120b on cerebras,12857.53,"{'intersection': 3, 'precision': 60.0, 'recall': 17.647058823529413, 'f-score': 27.27272727272727, 'predictions-len': 5, 'reference-len': 17}"
+arch3_ironagedanube-pactols,gpt-oss-120b on cerebras,478.67,"{'intersection': 4, 'precision': 80.0, 'recall': 80.0, 'f-score': 80.00000000000001, 'predictions-len': 5, 'reference-len': 5}"
+arch4_pactols-parthenos,gpt-oss-120b on cerebras,129.94,"{'intersection': 7, 'precision': 100.0, 'recall': 58.333333333333336, 'f-score': 73.68421052631578, 'predictions-len': 7, 'reference-len': 12}"
+cult1_idai-parthenos,gpt-oss-120b on cerebras,501.77,"{'intersection': 10, 'precision': 100.0, 'recall': 19.230769230769234, 'f-score': 32.25806451612904, 'predictions-len': 10, 'reference-len': 52}"
+cult2_oeai-parthenos,gpt-oss-120b on cerebras,665.84,"{'intersection': 27, 'precision': 93.10344827586206, 'recall': 57.446808510638306, 'f-score': 71.05263157894737, 'predictions-len': 29, 'reference-len': 47}"

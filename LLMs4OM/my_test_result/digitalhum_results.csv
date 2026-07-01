@@ -1,0 +1,7 @@
+dataset,model,time(s),result
+arch1_defc-pactols,BERTRetrieval,7.26,"{'intersection': 6, 'precision': 100.0, 'recall': 60.0, 'f-score': 74.99999999999999, 'predictions-len': 6, 'reference-len': 10}"
+arch2_idai-pactols,BERTRetrieval,17.72,"{'intersection': 4, 'precision': 57.14285714285714, 'recall': 23.52941176470588, 'f-score': 33.33333333333333, 'predictions-len': 7, 'reference-len': 17}"
+arch3_ironagedanube-pactols,BERTRetrieval,3.91,"{'intersection': 4, 'precision': 80.0, 'recall': 80.0, 'f-score': 80.00000000000001, 'predictions-len': 5, 'reference-len': 5}"
+arch4_pactols-parthenos,BERTRetrieval,6.0,"{'intersection': 7, 'precision': 77.77777777777779, 'recall': 58.333333333333336, 'f-score': 66.66666666666666, 'predictions-len': 9, 'reference-len': 12}"
+cult1_idai-parthenos,BERTRetrieval,5.07,"{'intersection': 13, 'precision': 68.42105263157895, 'recall': 25.0, 'f-score': 36.61971830985916, 'predictions-len': 19, 'reference-len': 52}"
+cult2_oeai-parthenos,BERTRetrieval,4.92,"{'intersection': 28, 'precision': 38.88888888888889, 'recall': 59.57446808510638, 'f-score': 47.05882352941177, 'predictions-len': 72, 'reference-len': 47}"
